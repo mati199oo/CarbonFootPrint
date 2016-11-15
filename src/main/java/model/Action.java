@@ -8,8 +8,9 @@ import java.util.ArrayList;
 public class Action {
 
     private String title;
-    private double carbon;
-    private ArrayList<String> substitutes;
+    private String type;
+    private ArrayList<Parameter> parameters;
+    private String method;
     private ArrayList<String> footprints;
 
     public String getTitle() {
@@ -20,20 +21,28 @@ public class Action {
         this.title = title;
     }
 
-    public double getCarbon() {
-        return carbon;
+    public String getType() {
+        return type;
     }
 
-    public void setCarbon(double carbon) {
-        this.carbon = carbon;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public ArrayList<String> getSubstitutes() {
-        return substitutes;
+    public ArrayList<Parameter> getParameters() {
+        return parameters;
     }
 
-    public void setSubstitutes(ArrayList<String> substitutes) {
-        this.substitutes = substitutes;
+    public void setParameters(ArrayList<Parameter> parameters) {
+        this.parameters = parameters;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     public ArrayList<String> getFootprints() {
