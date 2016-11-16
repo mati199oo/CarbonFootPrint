@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<CarbonFootprint>
+    <Actions>
+
+        <Action>
+            <Title>Carbon delivery</Title>
+            <Type>Finish</Type>
+
+            <DefaultActionss>
+                <DefaultAction>TruckCreation</DefaultAction>
+            </DefaultActionss>
+
+            <Parameters>
+                <Parameter>
+                    <Name>Distance</Name>
+                    <Value>100</Value>
+                    <Configurable>True</Configurable>
+                    <Min>20</Min>
+                    <Max>1000</Max>
+                </Parameter>
+                <Parameter>
+                    <Name>Cost</Name>
+                    <Value>50</Value>
+                    <Configurable>True</Configurable>
+                    <Min>10</Min>
+                    <Max>100</Max>
+                </Parameter>
+            </Parameters>
+
+            <Method>calculateDeliveryCost</Method>
+
+            <Footprints>
+                <Footprint>Vehicle</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Truck creation</Title>
+            <Type>Vehicle</Type>
+            <Method>getTruckCreationCost</Method>
+        </Action>
+
+    </Actions>
+
+    <Target>Carbon delivery</Target>
+</CarbonFootprint>

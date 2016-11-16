@@ -7,6 +7,7 @@ public class Parameter {
 
     private String name;
     private double value;
+    private boolean configurable;
     private double min;
     private double max;
 
@@ -24,6 +25,14 @@ public class Parameter {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public boolean isConfigurable() {
+        return configurable;
+    }
+
+    public void setConfigurable(boolean configurable) {
+        this.configurable = configurable;
     }
 
     public double getMin() {

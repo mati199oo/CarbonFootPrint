@@ -6,5 +6,19 @@ package utility;
 public class Constants {
 
     public final static String SOURCE_FILE_PATH = "../resources/SourceFile.xml";
+    public final static String ACTIONS_TAG = "Actions";
+    public final static String TARGET_TAG = "Target";
+    public final static String TITLE_TAG = "Title";
+    public final static String TYPE_TAG = "Type";
+    public final static String DEFAULT_ACTIONS_TAG = "DefaultActions";
+    public final static String PARAMETERS_TAG = "Parameters";
+    public final static String NAME_TAG = "Name";
+    public final static String VALUE_TAG = "Value";
+    public final static String CONFIGURABLE_TAG = "Configurable";
+    public final static String MIN_TAG = "Min";
+    public final static String MAX_TAG = "Max";
+    public final static String TRUE_VALUE = "True";
+    public final static String METHOD_TAG = "Method";
+    public final static String FOOTPRINTS_TAG = "Footprints";
 
 }

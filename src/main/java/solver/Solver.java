@@ -1,6 +1,7 @@
 package solver;
 
 import model.Action;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -8,14 +9,14 @@ import java.util.HashMap;
  */
 public class Solver {
 
+    private HashMap<String, ArrayList<String>> types;
     private HashMap<String, Action> actions;
+    private String target;
 
-    public HashMap<String, Action> getActions() {
-        return actions;
-    }
-
-    public void setActions(HashMap<String, Action> actions) {
+    public Solver(HashMap<String, ArrayList<String>> types, HashMap<String, Action> actions, String target) {
+        this.types = types;
         this.actions = actions;
+        this.target = target;
     }
 
     public void solve() {

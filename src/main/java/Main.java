@@ -1,8 +1,9 @@
 import model.Action;
+import org.jdom.Document;
 import solver.Solver;
 import utility.ActionCreator;
 import utility.FileReader;
-import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import static utility.Constants.SOURCE_FILE_PATH;
 
@@ -14,13 +15,12 @@ public class Main {
     public static void main(String[] args) {
 
         FileReader fileReader = new FileReader();
-        FileInputStream file = fileReader.readFile(SOURCE_FILE_PATH);
+        Document document = fileReader.readFile(SOURCE_FILE_PATH);
 
         ActionCreator actionCreator = new ActionCreator();
-        HashMap<String, Action> actions = actionCreator.createActions(file);
+        actionCreator.createActions(document);
 
-        Solver solver = new Solver();
-        solver.setActions(actions);
+        Solver solver = new Solver(actionCreator.getTypes(), actionCreator.getActions(), actionCreator.getTarget());
         solver.solve();
 
     }
