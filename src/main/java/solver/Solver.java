@@ -20,7 +20,10 @@ public class Solver {
     }
 
     public void solve() {
-
+        for (String key: actions.keySet()) {
+            Action action = actions.get(key);
+            System.out.println(action.getTitle());
+        }
     }
 
 }

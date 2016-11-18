@@ -19,3 +19,4 @@ hs_err_pid*
 /bin/
 /target/.settings
 .settings/
+/target
