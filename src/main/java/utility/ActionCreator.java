@@ -113,6 +113,9 @@ public class ActionCreator {
                     parameterObject.setConfigurable(true);
                 } else {
                     parameterObject.setConfigurable(false);
+                    parameterObject.setMin(NULL_VALUE);
+                    parameterObject.setMax(NULL_VALUE);
+                    return  parameterObject;
                 }
             } else if (MIN_TAG.equals(tagName)) {
                 parameterObject.setMin(Double.parseDouble(child.getText()));

@@ -9,10 +9,10 @@ public class Action {
 
     private String title;
     private String type;
-    private ArrayList<String> defaultActions;
-    private ArrayList<Parameter> parameters;
+    private ArrayList<String> defaultActions = new ArrayList<String>();
+    private ArrayList<Parameter> parameters = new ArrayList<Parameter>();
     private String method;
-    private ArrayList<String> footprints;
+    private ArrayList<String> footprints = new ArrayList<String>();
 
     private ArrayList<Action> footprintActions;
 

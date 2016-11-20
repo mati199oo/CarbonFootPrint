@@ -20,5 +20,6 @@ public class Constants {
     public final static String TRUE_VALUE = "True";
     public final static String METHOD_TAG = "Method";
     public final static String FOOTPRINTS_TAG = "Footprints";
+    public final static double NULL_VALUE = 0.0;
 
 }

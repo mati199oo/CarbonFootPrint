@@ -6,9 +6,9 @@
             <Title>Carbon delivery</Title>
             <Type>Finish</Type>
 
-            <DefaultActionss>
-                <DefaultAction>TruckCreation</DefaultAction>
-            </DefaultActionss>
+            <DefaultActions>
+                <DefaultAction>Truck creation</DefaultAction>
+            </DefaultActions>
 
             <Parameters>
                 <Parameter>
