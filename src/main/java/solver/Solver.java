@@ -26,9 +26,10 @@ public class Solver {
     }
 
     public void solve() {
+    	System.out.println(target);
         Action defaultSolution = createDefaultSolution(target);
         HashMap<String, Double> result = calculateFootprintCost(defaultSolution);
-        System.out.println(result.get("DeliveryCost"));
+        System.out.println(result.get("CarbonCost"));
     }
 
     private Action createDefaultSolution(String defaultAction) {

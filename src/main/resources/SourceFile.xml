@@ -1,10 +1,65 @@
 <?xml version="1.0"?>
 <CarbonFootprint>
     <Actions>
-
         <Action>
-            <Title>Carbon delivery</Title>
-            <Type>Finish</Type>
+            <Title>Coal power station</Title>
+            <Type>Power source</Type>
+            <Method>getCoalCarbonEmissionForKWh</Method>
+        </Action>
+        <Action>
+            <Title>Wind power station</Title>
+            <Type>Power source</Type>
+            <Method>getWindCarbonEmissionForKWh</Method>
+        </Action>
+        <Action>
+            <Title>Water power station</Title>
+            <Type>Power source</Type>
+            <Method>getWaterCarbonEmissionForKWh</Method>
+        </Action>
+        
+        <Action>
+            <Title>Coal furnace</Title>
+            <Type>Heat source</Type>
+            <Method>getCoalHeatForMg</Method>
+        </Action>
+        <Action>
+            <Title>Geyser</Title>
+            <Type>Heat source</Type>
+            <Method>getGeyserHeatForMg</Method>
+        </Action>
+        
+        <Action>
+            <Title>RawMaterialExtraction</Title>
+            <Type>Material</Type>
+            
+            <DefaultActions>
+                <DefaultAction>Coal power station</DefaultAction>
+                <DefaultAction>Coal furnace</DefaultAction>
+            </DefaultActions>
+            
+            <Parameters>
+                <Parameter>
+                    <Name>MineSize</Name>
+                    <Value>10000</Value>
+                    <Configurable>True</Configurable>
+                    <Min>5000</Min>
+                    <Max>100000</Max>
+                </Parameter>
+            </Parameters>
+            
+            <Method>calculateCarbonEmissionForMgOfRawMaterial</Method>
+            
+            <Footprints>
+                <Footprint>Power source</Footprint>
+                <Footprint>Heat source</Footprint>
+            </Footprints>
+        </Action>
+        
+        
+        
+        <Action>
+            <Title>Truck delivery</Title>
+            <Type>Transport</Type>
 
             <DefaultActions>
                 <DefaultAction>Truck creation</DefaultAction>
@@ -39,8 +94,27 @@
             <Type>Vehicle</Type>
             <Method>getTruckCreationCost</Method>
         </Action>
+        
+        
+        
+        <Action>
+            <Title>Finish</Title>
+            <Type>Finish</Type>
+            
+            <DefaultActions>
+                <DefaultAction>RawMaterialExtraction</DefaultAction>
+                <DefaultAction>Truck delivery</DefaultAction>
+            </DefaultActions>
+            
+            <Method>calculateCompleteCarbonEmission</Method>
+            
+            <Footprints>
+                <Footprint>Material</Footprint>
+                <Footprint>Transport</Footprint>
+            </Footprints>
+        </Action>
 
     </Actions>
 
-    <Target>Carbon delivery</Target>
+    <Target>Finish</Target>
 </CarbonFootprint>
