@@ -74,7 +74,10 @@ public class Solution {
 		if (types.get(a.getType()).size() > 1) {
 			if (rand.nextBoolean()) {
 				a0 = solver.createDefaultSolution(findSubstitute(a, types, actions).getTitle());
-			} 
+			}
+			for (int i = 0; i < a0.getFootprintActions().size(); i++) {
+				a0.getFootprintActions().add(mutateIfPossible(a0.getFootprintActions().get(i), types, actions));
+			}
 		} else {
 			for (int i = 0; i < a.getFootprintActions().size(); i++) {
 				a0.getFootprintActions().add(mutateIfPossible(a.getFootprintActions().get(i), types, actions));
