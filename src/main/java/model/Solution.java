@@ -19,7 +19,7 @@ public class Solution {
 	private void dupa(String depth, Action action) {
 		depth += "  ";
 		for (Action act : action.getFootprintActions()) {
-			System.out.println(depth + "-" + act.getTitle());
+//			System.out.println(depth + "-" + act.getTitle());
 			dupa(depth, act);
 		}
 	}
@@ -30,7 +30,7 @@ public class Solution {
 		nodes = new ArrayList<String>();
 		nodes.add(head.getTitle());
 		String depth = "";
-		System.out.println(head.getTitle());
+//		System.out.println(head.getTitle());
 		dupa(depth, head);
 	}
 
@@ -88,5 +88,17 @@ public class Solution {
 
 	public Solution mutate(HashMap<String, ArrayList<String>> types, HashMap<String, Action> actions) {
 		return new Solution(mutateIfPossible(head, types, actions), solver);
+	}
+	
+	private void printChildren(String depth, Action action) {
+		depth += "  ";
+		for (Action act : action.getFootprintActions()) {
+			System.out.println(depth + "-" + act.getTitle());
+			printChildren(depth, act);
+		}
+	}
+	public void print() {
+		System.out.println(head.getTitle());
+		printChildren("", head);
 	}
 }

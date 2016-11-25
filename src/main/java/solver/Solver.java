@@ -1,6 +1,7 @@
 package solver;
 
 import model.Action;
+import model.Population;
 import model.Solution;
 import utility.CopyMaker;
 import java.lang.reflect.InvocationTargetException;
@@ -44,22 +45,31 @@ public class Solver {
     	System.out.println(target);
         Action defaultSolution = createDefaultSolution(target);
         Solution solution = new Solution(defaultSolution, this);
-        System.out.println();
+        
+        Population population = new Population();
+        population.generateFromSeed(solution, types, actions);
+        population.printPopulation();
+        population.crossPopulation();
+        population.printPopulation();
+        population.crossPopulation();
+        population.printPopulation();
+        
+//        System.out.println();
 
-        Solution mutated1 = solution.mutate(types, actions);
-        Solution mutated2 = solution.mutate(types, actions);
-        Solution mutated3 = solution.mutate(types, actions);
-        Solution mutated4 = solution.mutate(types, actions);
-        System.out.println();
-
-        Solution crossed1 = solution.cross(mutated1);
-        Solution crossed1b = solution.cross(mutated1);
-        Solution crossed2 = solution.cross(mutated2);
-        Solution crossed2b = solution.cross(mutated2);
-        Solution crossed3 = solution.cross(mutated3);
-        Solution crossed3b = solution.cross(mutated3);
-        Solution crossed4 = solution.cross(mutated4);
-        Solution crossed4b = solution.cross(mutated4);
+//        Solution mutated1 = solution.mutate(types, actions);
+//        Solution mutated2 = solution.mutate(types, actions);
+//        Solution mutated3 = solution.mutate(types, actions);
+//        Solution mutated4 = solution.mutate(types, actions);
+//        System.out.println();
+//
+//        Solution crossed1 = solution.cross(mutated1);
+//        Solution crossed1b = solution.cross(mutated1);
+//        Solution crossed2 = solution.cross(mutated2);
+//        Solution crossed2b = solution.cross(mutated2);
+//        Solution crossed3 = solution.cross(mutated3);
+//        Solution crossed3b = solution.cross(mutated3);
+//        Solution crossed4 = solution.cross(mutated4);
+//        Solution crossed4b = solution.cross(mutated4);
         
 //        Action maxMutatedSolution = createMaxMutatedSolution(target);
 //        HashMap<String, Double> result = calculateFootprintCost(defaultSolution);
