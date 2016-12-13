@@ -7,6 +7,7 @@ import org.jdom.Element;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import static utility.Constants.*;
 
 /**
@@ -14,9 +15,14 @@ import static utility.Constants.*;
  */
 public class ActionCreator {
 
-    private HashMap<String, ArrayList<String>> types;
-    private HashMap<String, Action> actions;
+    private HashMap<String, ArrayList<String>> types = new HashMap<String, ArrayList<String>>();
+    private HashMap<String, Action> actions = new HashMap<String, Action>();
     private String target;
+
+    private MapFiller mapFiller = new MapFiller();
+    private CopyMaker copyMaker = new CopyMaker();
+    private Generator generator;
+    private Random random = new Random();
 
     public HashMap<String, ArrayList<String>> getTypes() {
         return types;
@@ -30,9 +36,8 @@ public class ActionCreator {
         return target;
     }
 
-    public ActionCreator(){
-        types = new HashMap<String, ArrayList<String>>();
-        actions = new HashMap<String, Action>();
+    public void setGenerator(Generator generator) {
+        this.generator = generator;
     }
 
     public void createActions(Document document) {
@@ -58,7 +63,7 @@ public class ActionCreator {
             if (TITLE_TAG.equals(tagName)) {
                 actionObject.setTitle(child.getText());
             } else if (TYPE_TAG.equals(tagName)) {
-                addTypeToMap(child.getText(), actionObject.getTitle());
+                mapFiller.addTypeToMap(types, child.getText(), actionObject.getTitle());
                 actionObject.setType(child.getText());
             } else if (DEFAULT_ACTIONS_TAG.equals(tagName)) {
                 actionObject.setDefaultActions(createDefaultActionsList(child.getChildren()));
@@ -71,16 +76,6 @@ public class ActionCreator {
             }
         }
         actions.put(actionObject.getTitle(), actionObject);
-    }
-
-    private void addTypeToMap(String type, String title) {
-        if (!types.containsKey(type)) {
-            ArrayList<String> titles = new ArrayList<String>();
-            titles.add(title);
-            types.put(type, titles);
-        } else {
-            types.get(type).add(title);
-        }
     }
 
     private ArrayList<String> createDefaultActionsList(List<Element> defaultActions) {
@@ -132,6 +127,32 @@ public class ActionCreator {
             footprintsList.add(footprint.getText());
         }
         return footprintsList;
+    }
+
+    public Action createNewAction(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, ArrayList<Double>> availableParameters,
+                                   HashMap<String, Action> availableActions, String actionName) {
+        Action newAction = copyMaker.copyAction(availableActions.get(actionName));
+        for (Parameter parameter: newAction.getParameters()) {
+            String parameterName = parameter.getName();
+            ArrayList<Double> values = availableParameters.get(parameterName);
+            int valueIndex = random.nextInt(values.size());
+            parameter.setValue(values.get(valueIndex));
+        }
+
+        ArrayList<Action> footprintActions = new ArrayList<Action>();
+        createFootprintActions(availableTypes, availableActions, newAction, footprintActions);
+        newAction.setFootprintActions(footprintActions);
+        return newAction;
+    }
+
+    public void createFootprintActions(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, Action> availableActions, Action newAction, ArrayList<Action> footprintActions) {
+        int actionNameIndex;
+        for (String footprintType: newAction.getFootprints()) {
+            ArrayList<String> actionsNames = availableTypes.get(footprintType);
+            actionNameIndex = random.nextInt(actionsNames.size());
+            Action footprintAction = generator.generateAction(actionsNames.get(actionNameIndex), availableActions, availableTypes);
+            footprintActions.add(footprintAction);
+        }
     }
 
 }

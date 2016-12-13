@@ -24,4 +24,10 @@ public class MethodsContainer {
         return result;
     }
 
+    public HashMap<String, Double> getBoatCreationCost(HashMap<String, Double> ins, ArrayList<Parameter> parameters) {
+        HashMap<String, Double> result = new HashMap<String, Double>();
+        result.put("TruckCreationCost", 10000.0);
+        return result;
+    }
+
 }

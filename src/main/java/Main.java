@@ -1,10 +1,7 @@
-import model.Action;
 import org.jdom.Document;
 import solver.Solver;
 import utility.ActionCreator;
 import utility.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
 import static utility.Constants.SOURCE_FILE_PATH;
 
 /**
@@ -20,7 +17,7 @@ public class Main {
         ActionCreator actionCreator = new ActionCreator();
         actionCreator.createActions(document);
 
-        Solver solver = new Solver(actionCreator.getTypes(), actionCreator.getActions(), actionCreator.getTarget());
+        Solver solver = new Solver(actionCreator.getTypes(), actionCreator.getActions(), actionCreator, actionCreator.getTarget());
         solver.solve();
 
     }

@@ -21,5 +21,9 @@ public class Constants {
     public final static String METHOD_TAG = "Method";
     public final static String FOOTPRINTS_TAG = "Footprints";
     public final static double NULL_VALUE = 0.0;
+    public final static int NUMBER_OF_SPACES = 4;
+    public final static int CARDINALITY = 20;
+    public final static int NUMBER_OF_ITERATIONS = 50;
+    public final static int MUTATION_CHANCE = 3;
 
 }
