@@ -1,7 +1,6 @@
 package utility;
 
 import model.Action;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
