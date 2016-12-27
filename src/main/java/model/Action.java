@@ -9,7 +9,6 @@ public class Action {
 
     private String title;
     private String type;
-    private ArrayList<String> defaultActions = new ArrayList<String>();
     private ArrayList<Parameter> parameters = new ArrayList<Parameter>();
     private String method;
     private ArrayList<String> footprints = new ArrayList<String>();
@@ -30,14 +29,6 @@ public class Action {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public ArrayList<String> getDefaultActions() {
-        return defaultActions;
-    }
-
-    public void setDefaultActions(ArrayList<String> defaultActions) {
-        this.defaultActions = defaultActions;
     }
 
     public ArrayList<Parameter> getParameters() {

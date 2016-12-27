@@ -10,7 +10,6 @@ public class Constants {
     public final static String TARGET_TAG = "Target";
     public final static String TITLE_TAG = "Title";
     public final static String TYPE_TAG = "Type";
-    public final static String DEFAULT_ACTIONS_TAG = "DefaultActions";
     public final static String PARAMETERS_TAG = "Parameters";
     public final static String NAME_TAG = "Name";
     public final static String VALUE_TAG = "Value";
@@ -22,8 +21,8 @@ public class Constants {
     public final static String FOOTPRINTS_TAG = "Footprints";
     public final static double NULL_VALUE = 0.0;
     public final static int NUMBER_OF_SPACES = 4;
-    public final static int CARDINALITY = 20;
-    public final static int NUMBER_OF_ITERATIONS = 50;
-    public final static int MUTATION_CHANCE = 3;
+    public final static int CARDINALITY = 50;
+    public final static int NUMBER_OF_ITERATIONS = 100;
+    public final static int MUTATION_CHANCE = 10;
 
 }

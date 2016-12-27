@@ -65,8 +65,6 @@ public class ActionCreator {
             } else if (TYPE_TAG.equals(tagName)) {
                 mapFiller.addTypeToMap(types, child.getText(), actionObject.getTitle());
                 actionObject.setType(child.getText());
-            } else if (DEFAULT_ACTIONS_TAG.equals(tagName)) {
-                actionObject.setDefaultActions(createDefaultActionsList(child.getChildren()));
             } else if (PARAMETERS_TAG.equals(tagName)) {
                 actionObject.setParameters(createParametersList(child.getChildren()));
             } else if (METHOD_TAG.equals(tagName)) {
@@ -76,14 +74,6 @@ public class ActionCreator {
             }
         }
         actions.put(actionObject.getTitle(), actionObject);
-    }
-
-    private ArrayList<String> createDefaultActionsList(List<Element> defaultActions) {
-        ArrayList<String> actionsList = new ArrayList<String>();
-        for (Element defaultAction: defaultActions) {
-            actionsList.add(defaultAction.getText());
-        }
-        return actionsList;
     }
 
     private ArrayList<Parameter> createParametersList(List<Element> parameters) {
@@ -145,7 +135,8 @@ public class ActionCreator {
         return newAction;
     }
 
-    public void createFootprintActions(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, Action> availableActions, Action newAction, ArrayList<Action> footprintActions) {
+    public void createFootprintActions(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, Action> availableActions,
+                                       Action newAction, ArrayList<Action> footprintActions) {
         int actionNameIndex;
         for (String footprintType: newAction.getFootprints()) {
             ArrayList<String> actionsNames = availableTypes.get(footprintType);

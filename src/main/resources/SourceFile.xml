@@ -6,10 +6,6 @@
             <Title>Carbon delivery</Title>
             <Type>Finish</Type>
 
-            <DefaultActions>
-                <DefaultAction>Truck creation</DefaultAction>
-            </DefaultActions>
-
             <Parameters>
                 <Parameter>
                     <Name>Distance</Name>

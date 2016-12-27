@@ -27,6 +27,7 @@ public class Solver {
     private Random random = new Random();
 
     private ArrayList<Unit> population;
+    private Unit bestSolution;
 
     public Solver(HashMap<String, ArrayList<String>> types, HashMap<String, Action> actions, ActionCreator actionCreator, String target) {
         this.types = types;
@@ -35,18 +36,9 @@ public class Solver {
         this.actionCreator = actionCreator;
         generator = new Generator(actionCreator);
         actionCreator.setGenerator(generator);
-    }
-
-    public void solve() {
         population = generateInitialPopulation(CARDINALITY);
-        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            selection();
-            crossingOver();
-            mutation();
-        }
+        bestSolution = findBestSolution();
         calculator.calculateUnitsFootprintCost(population);
-        Unit bestSolution = findBestSolution();
-        printer.printBestSolution(bestSolution);
     }
 
     private ArrayList<Unit> generateInitialPopulation(int cardinality) {
@@ -57,14 +49,46 @@ public class Solver {
         return population;
     }
 
+    private Unit findBestSolution() {
+        Unit bestSolution = population.get(0);
+        for (int i = 1; i < population.size(); i++) {
+            if (population.get(i).getFootprint() < bestSolution.getFootprint()) {
+                bestSolution = population.get(i);
+            }
+        }
+        return bestSolution;
+    }
+
+    public void solve() {
+        Unit iterationBestSolution;
+        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+            selection();
+            crossingOver();
+            mutation();
+            calculator.calculateUnitsFootprintCost(population);
+            iterationBestSolution = findBestSolution();
+            if (iterationBestSolution.getFootprint() < bestSolution.getFootprint()) {
+                bestSolution = iterationBestSolution;
+            }
+        }
+        printer.printBestSolution(bestSolution);
+    }
+
     private void selection() {
-        calculator.calculateUnitsFootprintCost(population);
         ArrayList<Unit> newPopulation = new ArrayList<Unit>();
-        for (int i = 0; i < CARDINALITY/2; i++) {
+        for (int i = 0; i < CARDINALITY / 2; i++) {
             Unit winner = fight();
             newPopulation.add(copyMaker.copyUnit(winner));
         }
         population = newPopulation;
+    }
+
+    private Unit fight() {
+        ArrayList<Unit> units = randomizer.randomizeUnits(population);
+        if (units.get(0).getFootprint() < units.get(1).getFootprint()) {
+            return units.get(0);
+        }
+        return units.get(1);
     }
 
     private void crossingOver() {
@@ -76,20 +100,6 @@ public class Solver {
         population = newPopulation;
     }
 
-    private void mutation() {
-        for (Unit unit: population) {
-            mutate(unit.getSolution(), false);
-        }
-    }
-
-    private Unit fight() {
-        ArrayList<Unit> units = randomizer.randomizeUnits(population);
-        if (units.get(0).getFootprint() < units.get(1).getFootprint()) {
-            return units.get(0);
-        }
-        return units.get(1);
-    }
-
     private Unit crossOver() {
         ArrayList<Unit> units = randomizer.randomizeUnits(population);
         Unit child = new Unit();
@@ -99,6 +109,12 @@ public class Solver {
         analyzer.findAvailableTypesAndParameters(availableTypes, availableParameters, availableActions,  units.get(0), units.get(1));
         child.setSolution(actionCreator.createNewAction(availableTypes, availableParameters, availableActions, target));
         return child;
+    }
+
+    private void mutation() {
+        for (Unit unit: population) {
+            mutate(unit.getSolution(), false);
+        }
     }
 
     private boolean mutate(Action action, boolean isMutated) {
@@ -163,16 +179,6 @@ public class Solver {
             return true;
         }
         return false;
-    }
-
-    private Unit findBestSolution() {
-        Unit bestSolution = population.get(0);
-        for (int i = 1; i < population.size(); i++) {
-            if (population.get(i).getFootprint() < bestSolution.getFootprint()) {
-                bestSolution = population.get(i);
-            }
-        }
-        return bestSolution;
     }
 
 }

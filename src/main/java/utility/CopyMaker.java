@@ -32,7 +32,6 @@ public class CopyMaker {
         Action newAction = new Action();
         newAction.setTitle(action.getTitle());
         newAction.setType(action.getType());
-        newAction.setDefaultActions(action.getDefaultActions());
         newAction.setParameters(copyActionParameters(action.getParameters()));
         newAction.setMethod(action.getMethod());
         newAction.setFootprints(action.getFootprints());
@@ -42,7 +41,6 @@ public class CopyMaker {
     public void copyActionAttributes(Action actionTarget, Action actionSource) {
         actionTarget.setTitle(actionSource.getTitle());
         actionTarget.setType(actionSource.getType());
-        actionTarget.setDefaultActions(actionSource.getDefaultActions());
         actionTarget.setParameters(copyActionParameters(actionSource.getParameters()));
         actionTarget.setMethod(actionSource.getMethod());
         actionTarget.setFootprints(actionSource.getFootprints());

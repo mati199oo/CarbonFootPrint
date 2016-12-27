@@ -14,12 +14,13 @@ public class Analyzer {
     private MapFiller mapFiller = new MapFiller();
 
     public void findAvailableTypesAndParameters(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, ArrayList<Double>> availableParameters,
-                                                 HashMap<String, Action> availableActions, Unit unit1, Unit unit2) {
+                                                HashMap<String, Action> availableActions, Unit unit1, Unit unit2) {
         analyzeAction(availableTypes, availableParameters, availableActions, unit1.getSolution());
         analyzeAction(availableTypes, availableParameters, availableActions, unit2.getSolution());
     }
 
-    private void analyzeAction(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, ArrayList<Double>> availableParameters, HashMap<String, Action> availableActions, Action action) {
+    private void analyzeAction(HashMap<String, ArrayList<String>> availableTypes, HashMap<String, ArrayList<Double>> availableParameters,
+                               HashMap<String, Action> availableActions, Action action) {
         mapFiller.addTypeToMap(availableTypes, action.getType(), action.getTitle());
         mapFiller.addActionToMap(availableActions, action.getTitle(), action);
         for (Parameter parameter: action.getParameters()) {
