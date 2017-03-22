@@ -22,7 +22,8 @@ public class Constants {
     public final static double NULL_VALUE = 0.0;
     public final static int NUMBER_OF_SPACES = 4;
     public final static int CARDINALITY = 50;
-    public final static int NUMBER_OF_ITERATIONS = 100;
+    public final static int NUMBER_OF_ITERATIONS = 10;
+    public final static int SAMPLES_IN_ITERATION = 10;
     public final static int MUTATION_CHANCE = 10;
 
 }
