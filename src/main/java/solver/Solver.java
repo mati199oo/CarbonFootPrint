@@ -71,7 +71,7 @@ public class Solver {
                 bestSolution = iterationBestSolution;
             }
         }
-        printer.printBestSolution(bestSolution);
+        //printer.printBestSolution(bestSolution);
         return bestSolution;
     }
 

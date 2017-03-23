@@ -18,8 +18,8 @@ public class Main {
 		actionCreator.createActions(document);
 
 		/* Single simulation */
-		Solver solver = new Solver(actionCreator.getTypes(), actionCreator.getActions(), actionCreator, actionCreator.getTarget());
-		solver.solve(NUMBER_OF_ITERATIONS);
+		//Solver solver = new Solver(actionCreator.getTypes(), actionCreator.getActions(), actionCreator, actionCreator.getTarget());
+		//solver.solve(NUMBER_OF_ITERATIONS);
 
 		/* Multiple simulations */
 		makeExperiment(actionCreator);
