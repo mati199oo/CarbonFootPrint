@@ -31,7 +31,7 @@ public class Experiment {
 				double mean = mn.evaluate(results);
 				double devMinus = mean - deviation;
 				double devPlus = mean + deviation;
-				writer.writeNext((devMinus + "#" + mean + "#" + devPlus).split("#"));
+				writer.writeNext((i + "#" + devMinus + "#" + mean + "#" + devPlus).split("#"));
 			}
 			writer.close();
 		} catch (IOException e) {
