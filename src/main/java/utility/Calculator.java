@@ -2,6 +2,7 @@ package utility;
 
 import model.Action;
 import solver.MethodsContainer;
+import solver.PACMethodsContainer;
 import solver.Unit;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,7 +14,8 @@ import java.util.HashMap;
  */
 public class Calculator {
 
-    private MethodsContainer methodsContainer = new MethodsContainer();
+//    private MethodsContainer methodsContainer = new MethodsContainer();
+    private PACMethodsContainer methodsContainer = new PACMethodsContainer();
 
     public void calculateUnitsFootprintCost(ArrayList<Unit> population) {
         for (Unit unit: population) {
