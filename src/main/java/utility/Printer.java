@@ -3,6 +3,7 @@ package utility;
 import model.Action;
 import model.Parameter;
 import solver.Unit;
+
 import static utility.Constants.NUMBER_OF_SPACES;
 
 /**
@@ -30,7 +31,7 @@ public class Printer {
             System.out.print(")");
         }
         System.out.println();
-        for (Action footprintAction: action.getFootprintActions()) {
+        for (Action footprintAction : action.getFootprintActions()) {
             printActionTitle(footprintAction, level + 1);
         }
     }

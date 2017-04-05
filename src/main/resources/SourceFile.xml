@@ -42,6 +42,12 @@
             <Method>getBoatCreationCost</Method>
         </Action>
 
+        <Action>
+            <Title>Train creation</Title>
+            <Type>Vehicle</Type>
+            <Method>getTrainCreationCost</Method>
+        </Action>
+
     </Actions>
 
     <Target>Carbon delivery</Target>

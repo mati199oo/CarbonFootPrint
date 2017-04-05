@@ -59,9 +59,9 @@ public class Solver {
         return bestSolution;
     }
 
-    public void solve() {
+    public Unit solve(int iterations) {
         Unit iterationBestSolution;
-        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+        for (int i = 0; i < iterations; i++) {
             selection();
             crossingOver();
             mutation();
@@ -71,7 +71,8 @@ public class Solver {
                 bestSolution = iterationBestSolution;
             }
         }
-        printer.printBestSolution(bestSolution);
+        //printer.printBestSolution(bestSolution);
+        return bestSolution;
     }
 
     private void selection() {
