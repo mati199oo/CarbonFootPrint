@@ -6,7 +6,8 @@ package utility;
 public class Constants {
 
     // public final static String SOURCE_FILE_PATH = "./src/main/resources/SourceFile.xml";
-    public final static String SOURCE_FILE_PATH = "./src/main/resources/PAC.xml";
+    // public final static String SOURCE_FILE_PATH = "./src/main/resources/PAC.xml";
+    public final static String SOURCE_FILE_PATH = "./src/main/resources/MutationTest.xml";
     public final static String ACTIONS_TAG = "Actions";
     public final static String TARGET_TAG = "Target";
     public final static String TITLE_TAG = "Title";

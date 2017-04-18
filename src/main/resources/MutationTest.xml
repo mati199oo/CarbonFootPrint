@@ -1,0 +1,219 @@
+<CarbonFootprint>
+
+    <Actions>
+        <!-- Extraction of a raw material -->
+        <Action>
+            <Title>Emission related with the first method of extraction.</Title>
+            <Type>ExtractionEmissionFirst</Type>
+            <Parameters>
+                <Parameter>
+                    <Name>Emission</Name>
+                    <Value>125</Value>
+                    <Configurable>True</Configurable>
+                    <ConfigurableType>Range</ConfigurableType>
+                    <Min>100</Min>
+                    <Max>150</Max>
+                </Parameter>
+            </Parameters>
+            <Method>getEmissionForFirstMethodOfExtraction</Method>
+        </Action>
+
+        <Action>
+            <Title>Emission related with the second method of extraction.</Title>
+            <Type>ExtractionEmissionSecond</Type>
+            <Parameters>
+                <Parameter>
+                    <Name>Emission</Name>
+                    <Value>115</Value>
+                    <Configurable>True</Configurable>
+                    <ConfigurableType>List</ConfigurableType>
+                    <List>
+                        <Value>110</Value>
+                        <Value>112.5</Value>
+                        <Value>115</Value>
+                        <Value>117.5</Value>
+                        <Value>120</Value>
+                    </List>
+                </Parameter>
+            </Parameters>
+            <Method>getEmissionForSecondMethodOfExtraction</Method>
+        </Action>
+
+        <Action>
+            <Title>Emission related with the third method of extraction.</Title>
+            <Type>ExtractionEmissionThird</Type>
+            <Parameters>
+                <Parameter>
+                    <Name>Emission</Name>
+                    <Value>125</Value>
+                    <Configurable>True</Configurable>
+                    <ConfigurableType>Range</ConfigurableType>
+                    <Min>120</Min>
+                    <Max>130</Max>
+                </Parameter>
+            </Parameters>
+            <Method>getEmissionForThirdMethodOfExtraction</Method>
+        </Action>
+
+        <Action>
+            <Title>Constant emission independent of extraction method.</Title>
+            <Type>ExtractionEmissionConstant</Type>
+            <Method>getConstantEmissionForExtraction</Method>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with the first method of extraction.</Title>
+            <Type>OverallEmissionForExtraction</Type>
+            <Method>getOverallEmissionForFirstMethodOfExtraction</Method>
+            <Footprints>
+                <Footprint>ExtractionEmissionFirst</Footprint>
+                <Footprint>ExtractionEmissionConstant</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with the second method of extraction.</Title>
+            <Type>OverallEmissionForExtraction</Type>
+            <Method>getOverallEmissionForSecondMethodOfExtraction</Method>
+            <Footprints>
+                <Footprint>ExtractionEmissionSecond</Footprint>
+                <Footprint>ExtractionEmissionConstant</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with the third method of extraction.</Title>
+            <Type>OverallEmissionForExtraction</Type>
+            <Method>getOverallEmissionForThirdMethodOfExtraction</Method>
+            <Footprints>
+                <Footprint>ExtractionEmissionThird</Footprint>
+                <Footprint>ExtractionEmissionConstant</Footprint>
+            </Footprints>
+        </Action>
+
+
+        <!-- Transport -->
+        <Action>
+            <Title>Emission related with consumption of 1l of fuel.</Title>
+            <Type>FuelConsumptionEmission</Type>
+            <Method>getEmissionForFuelConsumption</Method>
+        </Action>
+
+        <Action>
+            <Title>Average fuel consumption for conventional truck.</Title>
+            <Type>FuelConsumption</Type>
+            <Method>getFuelConsumptionForConventionalTruck</Method>
+        </Action>
+
+        <Action>
+            <Title>Average fuel consumption for ecological truck.</Title>
+            <Type>FuelConsumption</Type>
+            <Method>getFuelConsumptionForEcologicalTruck</Method>
+        </Action>
+
+        <Action>
+            <Title>Emission related with wheel transport for 1km.</Title>
+            <Type>EmissionForWheelTransport</Type>
+            <Method>getEmissionForWheelTransport</Method>
+            <Footprints>
+                <Footprint>FuelConsumptionEmission</Footprint>
+                <Footprint>FuelConsumption</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Wheel distance to the factory.</Title>
+            <Type>WheelDistance</Type>
+            <Method>getWheelDistance</Method>
+            <Parameters>
+                <Parameter>
+                    <Name>Distance</Name>
+                    <Value>550</Value>
+                    <Configurable>True</Configurable>
+                    <ConfigurableType>Range</ConfigurableType>
+                    <Min>500</Min>
+                    <Max>600</Max>
+                </Parameter>
+            </Parameters>
+        </Action>
+
+        <Action>
+            <Title>Emission related with railway transport for 1km.</Title>
+            <Type>EmissionForRailwayTransport</Type>
+            <Method>getEmissionForRailwayTransport</Method>
+        </Action>
+
+        <Action>
+            <Title>Railway distance to the factory.</Title>
+            <Type>RailwayDistance</Type>
+            <Method>getRailwayDistance</Method>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with wheel transport to the factory.</Title>
+            <Type>OverallEmissionForTransport</Type>
+            <Method>getOverallEmissionForWheelTransport</Method>
+            <Footprints>
+                <Footprint>EmissionForWheelTransport</Footprint>
+                <Footprint>WheelDistance</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with railway transport to the factory.</Title>
+            <Type>OverallEmissionForTransport</Type>
+            <Method>getOverallEmissionForRailwayTransport</Method>
+            <Footprints>
+                <Footprint>EmissionForRailwayTransport</Footprint>
+                <Footprint>RailwayDistance</Footprint>
+            </Footprints>
+        </Action>
+
+
+        <!-- Production -->
+        <Action>
+            <Title>Emission related with the first method of production.</Title>
+            <Type>ProductionEmission</Type>
+            <Method>getEmissionForFirstMethodOfProduction</Method>
+        </Action>
+
+        <Action>
+            <Title>Emission related with the second method of production.</Title>
+            <Type>ProductionEmission</Type>
+            <Method>getEmissionForSecondMethodOfProduction</Method>
+        </Action>
+
+        <Action>
+            <Title>Constant emission independent of production method.</Title>
+            <Type>ProductionEmissionConstant</Type>
+            <Method>getConstantEmissionForProduction</Method>
+        </Action>
+
+        <Action>
+            <Title>Overall emission related with production.</Title>
+            <Type>OverallEmissionForProduction</Type>
+            <Method>getOverallEmissionForProduction</Method>
+            <Footprints>
+                <Footprint>ProductionEmission</Footprint>
+                <Footprint>ProductionEmissionConstant</Footprint>
+            </Footprints>
+        </Action>
+
+
+        <!-- Final -->
+        <Action>
+            <Title>Overall emission during whole process.</Title>
+            <Type>OverallEmission</Type>
+            <Method>getOverallEmission</Method>
+            <Footprints>
+                <Footprint>OverallEmissionForExtraction</Footprint>
+                <Footprint>OverallEmissionForTransport</Footprint>
+                <Footprint>OverallEmissionForProduction</Footprint>
+            </Footprints>
+        </Action>
+
+    </Actions>
+
+    <Target>Overall emission during whole process.</Target>
+
+</CarbonFootprint>

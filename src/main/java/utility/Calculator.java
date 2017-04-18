@@ -2,6 +2,7 @@ package utility;
 
 import model.Action;
 import solver.MethodsContainer;
+import solver.MutationTestMethodContainer;
 import solver.PACMethodsContainer;
 import solver.Unit;
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 public class Calculator {
 
 //    private MethodsContainer methodsContainer = new MethodsContainer();
-    private PACMethodsContainer methodsContainer = new PACMethodsContainer();
+    private MutationTestMethodContainer methodsContainer = new MutationTestMethodContainer();
 
     public void calculateUnitsFootprintCost(ArrayList<Unit> population) {
         for (Unit unit: population) {
