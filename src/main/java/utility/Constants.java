@@ -5,7 +5,9 @@ package utility;
  */
 public class Constants {
 
-    public final static String SOURCE_FILE_PATH = "./src/main/resources/SourceFile.xml";
+    // public final static String SOURCE_FILE_PATH = "./src/main/resources/SourceFile.xml";
+    // public final static String SOURCE_FILE_PATH = "./src/main/resources/PAC.xml";
+    public final static String SOURCE_FILE_PATH = "./src/main/resources/MutationTest.xml";
     public final static String ACTIONS_TAG = "Actions";
     public final static String TARGET_TAG = "Target";
     public final static String TITLE_TAG = "Title";
@@ -23,6 +25,7 @@ public class Constants {
     public final static int NUMBER_OF_SPACES = 4;
     public final static int CARDINALITY = 50;
     public final static int NUMBER_OF_ITERATIONS = 100;
+    public final static int SAMPLES_IN_ITERATION = 30;
     public final static int MUTATION_CHANCE = 10;
 
 }

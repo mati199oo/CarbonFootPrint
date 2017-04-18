@@ -141,6 +141,7 @@ public class ActionCreator {
         for (String footprintType: newAction.getFootprints()) {
             ArrayList<String> actionsNames = availableTypes.get(footprintType);
             actionNameIndex = random.nextInt(actionsNames.size());
+            // TODO: Probably there is a bug, we should check only in available actions, not all of them
             Action footprintAction = generator.generateAction(actionsNames.get(actionNameIndex), availableActions, availableTypes);
             footprintActions.add(footprintAction);
         }

@@ -1,0 +1,173 @@
+<CarbonFootprint>
+
+    <Actions>
+        <!-- Wydobycie surowca -->
+        <Action>
+            <Title>Zużycie energii elektrycznej na 1 Mg surowca</Title>
+            <Type>Zużycie prądu na wydobycie</Type>
+            <Method>getElectricityUsageForExtraction</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja z produkcji 1 kWh z węgla kamiennego</Title>
+            <Type>Produkcja prądu</Type>
+            <Method>getEmissionByElectricity</Method>
+        </Action>
+
+        <Action>
+            <Title>Zużycie energii cieplnej na 1 Mg surowca</Title>
+            <Type>Zużycie ciepła</Type>
+            <Method>getHeatUsage</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja z produkcji 1 GJ ciepła</Title>
+            <Type>Produkcja ciepła</Type>
+            <Method>getEmissionByHeat</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja ze zużycia energii na 1 Mg surowca</Title>
+            <Type>Zużycie energii</Type>
+            <Method>calculateEmissionByEnergy</Method>
+            <Footprints>
+                <Footprint>Zużycie prądu na wydobycie</Footprint>
+                <Footprint>Produkcja prądu</Footprint>
+                <Footprint>Zużycie ciepła</Footprint>
+                <Footprint>Produkcja ciepła</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Emisja ze spalenia wychwyconego metanu z powietrza wentylacyjnego</Title>
+            <Type>Emisja ze spalenia metanu</Type>
+            <Method>getEmissionByMethaneBurning</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja z wyemitowanego metanu jako eq. CO2</Title>
+            <Type>Emisja metanu</Type>
+            <Method>getMethaneEmission</Method>
+        </Action>
+
+        <Action>
+            <Title>Wydobycie surowca</Title>
+            <Type>Wydobycie</Type>
+            <Method>calculateExtractionFootprint</Method>
+            <Footprints>
+                <Footprint>Zużycie energii</Footprint>
+                <Footprint>Emisja ze spalenia metanu</Footprint>
+                <Footprint>Emisja metanu</Footprint>
+            </Footprints>
+        </Action>
+
+        <!-- Transport węgla -->
+        <!-- Node "Emisja z produkcji 1 kWh z węgla kamiennego" may be reused here. -->
+        <Action>
+            <Title>Zużycie energii elektrycznej na transport koleją 1 Mg ładunku / 1 km</Title>
+            <Type>Zużycie prądu na transport koleją</Type>
+            <Method>getElectricityUsageForTransport</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja z transportu 1 Mg surowca na 1 km</Title>
+            <Type>Emisja z transportu</Type>
+            <Method>calculateEmissionByTransport</Method>
+            <Footprints>
+                <Footprint>Produkcja prądu</Footprint>
+                <Footprint>Zużycie prądu na transport koleją</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Odległość kopalni od zakładu aktywacji</Title>
+            <Type>Odległość</Type>
+            <Method>getDistance</Method>
+        </Action>
+
+        <Action>
+            <Title>Transport węgla</Title>
+            <Type>Transport</Type>
+            <Method>calculateTransportFootprint</Method>
+            <Footprints>
+                <Footprint>Emisja z transportu</Footprint>
+                <Footprint>Odległość</Footprint>
+            </Footprints>
+        </Action>
+
+        <!-- Proces aktywacji -->
+        <!-- Node "Emisja z produkcji 1 kWh z węgla kamiennego" may be reused here. -->
+        <Action>
+            <Title>Zużycie energii elektrycznej na wszystkich etapach procesu aktywacji węgla na 1 Mg sorbentu</Title>
+            <Type>Zużycie prądu na aktywację</Type>
+            <Method>getElectricityUsageForActivation</Method>
+        </Action>
+
+        <Action>
+            <Title>Emisja z produkcji 1 Mg sorbentu</Title>
+            <Type>Produkcja sorbentu</Type>
+            <Method>calculateEmissionBySorbentProduction</Method>
+            <Footprints>
+                <Footprint>Produkcja prądu</Footprint>
+                <Footprint>Zużycie prądu na aktywację</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Emisja z uwolnionego gazu pirolitycznego</Title>
+            <Type>Emisja gazu pirolitycznego</Type>
+            <Method>getPyrolyticGasEmission</Method>
+        </Action>
+
+        <Action>
+            <Title>Pierwsza gałąź procesu aktywacji</Title>
+            <Type>Aktywacja 1</Type>
+            <Method>calculateEmissionByActivationFirstBranch</Method>
+            <Footprints>
+                <Footprint>Produkcja sorbentu</Footprint>
+                <Footprint>Emisja gazu pirolitycznego</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Współczynnik koniecznego wsadu węgla aby uzyskać 1 Mg sorbentu</Title>
+            <Type>Współczynnik wsadu węgla</Type>
+            <Method>getCoalCharge</Method>
+        </Action>
+
+        <Action>
+            <Title>Całkowity PAC</Title>
+            <Type>PAC</Type>
+            <Method>calculateOverallPAC</Method>
+            <Footprints>
+                <Footprint>Wydobycie</Footprint>
+                <Footprint>Transport</Footprint>
+            </Footprints>
+        </Action>
+
+        <Action>
+            <Title>Druga gałąź procesu aktywacji</Title>
+            <Type>Aktywacja 2</Type>
+            <Method>calculateEmissionByActivationSecondBranch</Method>
+            <Footprints>
+                <Footprint>Współczynnik wsadu węgla</Footprint>
+                <Footprint>PAC</Footprint>
+            </Footprints>
+        </Action>
+
+
+        <!-- Final -->
+        <Action>
+            <Title>Proces aktywacji</Title>
+            <Type>Aktywacja</Type>
+            <Method>calculateActivationFootprint</Method>
+            <Footprints>
+                <Footprint>Aktywacja 1</Footprint>
+                <Footprint>Aktywacja 2</Footprint>
+            </Footprints>
+        </Action>
+    </Actions>
+
+    <Target>Proces aktywacji</Target>
+
+</CarbonFootprint>
